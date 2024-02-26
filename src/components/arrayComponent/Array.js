@@ -19,74 +19,92 @@ export const array = [
 export const category = [
   {
     img: Adidas,
+    price:'12',
     name: "Adidas",
   },
   {
     img: Nike,
+    price:'12',
     name: "Nike",
   },
   {
     img: Bata,
+    price:'12',
     name: "Bata",
   },
   {
     img: Service,
+    price:'12',
     name: "Service",
   },
   {
     img: runShoes,
+    price:'12',
     name: "Service",
   },
   {
     img: snadle,
+    price:'12',
     name: "Service",
   },
   {
     img: Service,
+    price:'12',
     name: "Service",
   },
   {
     img: Service,
+    price:'12',
     name: "Service",
   },
   {
     img: Service,
+    price:'12',
     name: "Service",
   },
   {
     img: Adidas,
+    price:'12',
     name: "Adidas",
   },
   {
     img: Nike,
+    price:'12',
     name: "Nike",
   },
   {
     img: Bata,
+    price:'12',
     name: "Bata",
   },
   {
     img: Service,
+    price:'12',
     name: "Service",
   },
   {
     img: runShoes,
+    price:'12',
     name: "Service",
   },
   {
     img: snadle,
+    price:'12',
     name: "Service",
   },
   {
     img: Service,
+    price:'12',
     name: "Service",
   },
   {
     img: Service,
+    price:'12',
     name: "Service",
   },
   {
     img: Service,
+    price:'12',
     name: "Service",
   },
 ];

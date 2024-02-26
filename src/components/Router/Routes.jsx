@@ -6,7 +6,7 @@ import { SignUp } from "../signUpPage/SignUp";
 import AdminPenal from "../adminPanal/AdminPenal";
 import Home from "../homePage/Home";
 import { Navbar } from "../navbar/Navbar";
-import {Private} from "../privatePage/Private";
+import { Private } from "../privatePage/Private";
 import CategoryDetails from "../categoryDetailsPage/CategoryDetails";
 import { AddToCartPage } from "../addToCartPage/AddToCartPage";
 import { CheckOutPage } from "../checkOutPage/CheckOutPage";
@@ -22,63 +22,13 @@ export const RoutesComponents = () => {
 
         <Route path="/register" element={<SignUp />} />
 
-        <Route
-          path="/home"
-          element={
-            // <Private>
-              <Home />
-            // </Private>
-          }
-        />
-        {/* <Route path="/adminLog" element={<AdminPenal />} />
-        <Route
-          path="/home"
-          element={
-            <Private>
-              <Home />
-            </Private>
-          }
-        />
-        <Route
-          path="/products/:code"
-          element={
-            <Private>
-              <CategoryDetails />
-            </Private>
-          }
-        />
-        <Route
-          path="/cart/:id"
-          element={
-            <Private>
-              <AddToCartPage />
-            </Private>
-          }
-        />
-        <Route
-          path="/cart"
-          element={
-            <Private>
-              <CheckOutPage />
-            </Private>
-          }
-        />
-        <Route
-          path="/pendingOrders"
-          element={
-            <Private>
-              <PendingOrderPage />
-            </Private>
-          }
-        />
-        <Route
-          path="/completeOrders"
-          element={
-            <Private>
-              <CompleteOrders />
-            </Private>
-          }
-        /> */}
+        <Route path="/adminLog" element={<AdminPenal />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/products/:code" element={<CategoryDetails />} />
+        <Route path="/cart/:id" element={<AddToCartPage />} />
+        <Route path="/cart" element={<CheckOutPage />} />
+        <Route path="/pendingOrders" element={<PendingOrderPage />} />
+        <Route path="/completeOrders" element={<CompleteOrders />} />
       </Routes>
     </>
   );

@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import banner from "../../assets/banner.webp";
 import { Box, Grid } from "@mui/material";
 import {
@@ -11,7 +10,6 @@ import {
   CarouselBox,
   CarouselBoxText,
   CarouselImage,
-  CarouselText,
   CarouselTypography,
   CatagoryBox,
   CategoryTag,
@@ -33,9 +31,6 @@ import {
 } from "./styled-component";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Link } from "react-router-dom";
-import { getProductData } from "../../api/signApi/signUpApi";
-import { category } from "../arrayComponent/Array";
 import { NavLink } from "react-router-dom/dist";
 import { Loader } from "../loaderPage/Loader";
 import { useQuery } from "@apollo/client";
@@ -85,8 +80,8 @@ export default function Home() {
       ) : (
         <>
           <CatagoryBox>
-            {unique.map((item, i) => {
-              const imgUrl = arr.find((ob) => ob.cat == item);
+            {unique?.map((item, i) => {
+              const imgUrl = arr?.find((ob) => ob.cat == item);
               return (
                 <ChildCatagoryBox key={i}>
                   <ImageBox component="img" src={imgUrl?.img} alt="" />
@@ -167,19 +162,15 @@ export default function Home() {
                         style={{ textDecoration: "none", color: "black" }}
                         to={`/cart/${item._id}`}
                       >
-                        {/* {isLoading ? ( */}
                         <Box
                           style={{ display: "flex", justifyContent: "center" }}
                         >
-                          <Loader />
                         </Box>
-                        {/* ) : ( */}
                         <CardImage
                           component="img"
                           src={item.images[0]}
                           alt=""
                         />
-                        {/* )} */}
                         <DecriptionSection>
                           <Box>
                             <CardTitle>{item.productname}</CardTitle>

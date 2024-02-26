@@ -1,12 +1,20 @@
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import { RoutesComponents } from "./components/Router/Routes";
+import AddToCart from "./components/clinicForm/Addto";
+import NewAddToCart from "./components/NewAddToCart/NewAddToCart";
 
 function App() {
   return (
     <>
       <ToastContainer />
-      <RoutesComponents />
+
+      {/* <ToastContainer />
+      <RoutesComponents /> */}
+
+      {/* <AddToCart/> */}
+
+      <NewAddToCart/>
     </>
   );
 }
