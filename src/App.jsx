@@ -7,13 +7,8 @@ import NewAddToCart from "./components/NewAddToCart/NewAddToCart";
 function App() {
   return (
     <>
-      <ToastContainer />
-
-      {/* <ToastContainer />
-      <RoutesComponents /> */}
-
-      {/* <AddToCart/> */}
-
+       <ToastContainer />
+      {/* <RoutesComponents /> */}
       <NewAddToCart/>
     </>
   );
