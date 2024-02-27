@@ -33,7 +33,7 @@ export default function NewAddToCart() {
     >
       {/* cart */}
 
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{}}>
         <div
           style={{
             display: "flex",
@@ -66,13 +66,11 @@ export default function NewAddToCart() {
             Clear cart
           </a>
         </div>
-        
+
         <Box
           sx={{
-            // maxHeight: "500px",
-            // height: "440px",
-            height:'100%',
-            height: 'calc(100vh + 0px)',
+            maxHeight: "500px",
+            height: "440px",
             width: "100%",
             overflowY: "auto",
 
@@ -137,8 +135,8 @@ export default function NewAddToCart() {
                         priority="true"
                         src={item.img}
                         alt="hsdfk"
-                        // height={60}
-                        // width={60}
+                      // height={60}
+                      // width={60}
                       />
                     </Box>
                     <Box style={{ marginLeft: "8rem" }}>
@@ -199,14 +197,14 @@ export default function NewAddToCart() {
             );
           })}
         </Box>
-        </Box>
-        <Box
-          sx={{
-            border: "1px solid  #393C49",
-            margin: "0px 30px",
-          }}
-        />
-        {/* <Box>
+      </Box>
+      <Box
+        sx={{
+          border: "1px solid  #393C49",
+          margin: "0px 30px",
+        }}
+      />
+      {/* <Box>
                 <Box
                     sx={{
                         display: "flex",
@@ -335,105 +333,105 @@ export default function NewAddToCart() {
                     </Button>
                 </Box>
             </Box> */}
-        <Box style={{ padding: "10px 15px", boxSizing: "border-box" }}>
-          <Box
+      <Box style={{ padding: "10px 15px", boxSizing: "border-box" }}>
+        <Box
+          style={{
+            fontSize: "14px",
+            boxSizing: "border-box",
+            margin: "6px 0px",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography
             style={{
               fontSize: "14px",
-              boxSizing: "border-box",
-              margin: "6px 0px",
-              display: "flex",
-              justifyContent: "space-between",
+              color: "#6f7274",
+              fontWeight: "400",
+              lineHeight: "1.5",
             }}
           >
-            <Typography
-              style={{
-                fontSize: "14px",
-                color: "#6f7274",
-                fontWeight: "400",
-                lineHeight: "1.5",
-              }}
-            >
-              Subtotal
-            </Typography>
-            <Typography style={{ color: "rgb(131, 143, 155)" }}>
-              Rs.4670
-            </Typography>
-          </Box>
-          <Box
-            style={{
-              fontSize: "14px",
-              boxSizing: "border-box",
-              margin: "6px 0px",
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          >
-            <Typography
-              style={{
-                fontSize: "14px",
-                color: "#6f7274",
-                fontWeight: "400",
-                lineHeight: "1.5",
-              }}
-            >
-              Delivery Charges
-            </Typography>
-            <Typography style={{ color: "rgb(131, 143, 155)" }}>
-              Rs.0.00
-            </Typography>
-          </Box>
-
-          <Box
-            style={{
-              boxSizing: "border-box",
-              margin: "6px 0px",
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          >
-            <Typography
-              style={{
-                fontSize: "1rem",
-                color: "rgb(36 40 43)",
-                fontWeight: "bold",
-                lineHeight: "1.5",
-              }}
-            >
-              Grand total
-            </Typography>
-            <Typography
-              style={{
-                fontSize: "1rem",
-                fontWeight: "bold",
-                color: "rgb(131, 143, 155)",
-              }}
-            >
-              Rs.4670
-            </Typography>
-          </Box>
-          <button
-            style={{
-              fontSize: "14px",
-              padding: "0px 16px",
-              width: "100%",
-              outLine: "0px",
-              border: "none",
-              textDecoration: "none",
-              boxShadow: "none",
-              backgroundColor: "rgb(248, 191, 68)",
-              color: "rgb(0, 0, 0)",
-              borderRadius: "25px",
-              lineHeight: "1.25",
-              height: "42px",
-              fontWeight: "bold",
-              textTransform: "unset",
-              cursor: "pointer",
-            }}
-          >
-            Checkout
-          </button>
+            Subtotal
+          </Typography>
+          <Typography style={{ color: "rgb(131, 143, 155)" }}>
+            Rs.4670
+          </Typography>
         </Box>
+        <Box
+          style={{
+            fontSize: "14px",
+            boxSizing: "border-box",
+            margin: "6px 0px",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography
+            style={{
+              fontSize: "14px",
+              color: "#6f7274",
+              fontWeight: "400",
+              lineHeight: "1.5",
+            }}
+          >
+            Delivery Charges
+          </Typography>
+          <Typography style={{ color: "rgb(131, 143, 155)" }}>
+            Rs.0.00
+          </Typography>
+        </Box>
+
+        <Box
+          style={{
+            boxSizing: "border-box",
+            margin: "6px 0px",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography
+            style={{
+              fontSize: "1rem",
+              color: "rgb(36 40 43)",
+              fontWeight: "bold",
+              lineHeight: "1.5",
+            }}
+          >
+            Grand total
+          </Typography>
+          <Typography
+            style={{
+              fontSize: "1rem",
+              fontWeight: "bold",
+              color: "rgb(131, 143, 155)",
+            }}
+          >
+            Rs.4670
+          </Typography>
+        </Box>
+        <button
+          style={{
+            fontSize: "14px",
+            padding: "0px 16px",
+            width: "100%",
+            outLine: "0px",
+            border: "none",
+            textDecoration: "none",
+            boxShadow: "none",
+            backgroundColor: "rgb(248, 191, 68)",
+            color: "rgb(0, 0, 0)",
+            borderRadius: "25px",
+            lineHeight: "1.25",
+            height: "42px",
+            fontWeight: "bold",
+            textTransform: "unset",
+            cursor: "pointer",
+          }}
+        >
+          Checkout
+        </button>
       </Box>
+    </Box>
   );
   return (
     <>
