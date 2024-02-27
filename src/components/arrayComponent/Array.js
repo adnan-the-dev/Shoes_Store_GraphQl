@@ -64,7 +64,7 @@ export const category = [
   },
   {
     img: Adidas,
-    price:'12',
+    price:'4530',
     name: "Adidas",
   },
   {

@@ -33,7 +33,26 @@ export default function AddToCart() {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             {/* cart */}
+            {/* // <div style={{ width: '400px', backgroundColor: "#fff", display: 'flex', boxSizing: 'border-box', flexDirection: 'column', height: '100%' }}>
+    //     <div style={{ display: 'flex', boxSizing: 'border-box', flexDirection: 'row', justifyContent: 'space-between', padding: '10px 15px', fontWeight: '600' }}>
+    //         <span style={{ fontSize: '1rem', lineHeight: '1.5', fontWeight: '600', boxSizing: 'border-box' }}>Your Cart</span>
+    //         <a style={{ margin: '0px', color: 'rgb(252, 185, 45)', cursor: 'pointer', boxSizing: 'border-box', textDecoration: 'underline rgba(252, 185, 45, 0.4)' }}>Clear cart</a>
+    //     </div>
 
+    //     <div style={{ maxHeight: '100%', margin: '4px 0px', boxSizing: 'border-box', overflowY: 'scroll', borderBottom: '1px solid rgba(0, 0, 0, 0.12)', display: 'flex', flexDirection: 'column', flex: '1 1 0%', padding: '10px 15px' }}>
+    //         <div style={{ borderTopWidth: '1px', borderTopStyle: 'solid', padding: '6px 6px 6px 0', position: 'relative', boxSizing: 'border-box' }}>
+    //             <div style={{position: 'relative', maxHeight: '60px', maxWidth: '60px', height: '35vw', width: '35vw', borderRadius: '4px', overflow: 'hidden', margin: '0 6px', boxSizing: 'border-box' }}>
+    //                 <div style={{ boxSizing: 'border-box', display: 'block', overflow: 'hidden', width: 'initial', height: 'initial', background: 'none', opacity: '1', border: '0px', margin: '0px', padding: '0px', position: 'absolute', inset: '0px' }}>
+    //                     <img style={{ boxSizing: 'border-box', position: 'absolute', minWidth: '100%', maxWidth: '100%', minHeight: '100%', maxHeight: '100%', objectFit: 'contain' }} src="https://whitescastle.netlify.app/images/menu/crown-crust.jpg" alt="" />
+    //                 </div>
+    //                 <div style={{ display: 'flex', flexDirection: 'column', flex: '1 1 0%', boxSizing: 'border-box' }}>
+    //                     <div style={{ margin: '2px', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: '2',WebkitBoxOrient: 'vertical',fontSize: '16px',fontWeight: '700',color: '#111' }}>Mega Deal</div>
+    //                     <div></div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     </div>
+    // </div> */}
 
             <Box sx={{ width: "100%" }}>
                 <Box sx={{
