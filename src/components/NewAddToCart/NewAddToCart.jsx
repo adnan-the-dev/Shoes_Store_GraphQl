@@ -34,7 +34,7 @@ export default function NewAddToCart() {
       {/* cart */}
 
       <Box sx={{}}>
-        <div
+        <Box
           style={{
             display: "flex",
             boxSizing: "border-box",
@@ -44,7 +44,7 @@ export default function NewAddToCart() {
             fontWeight: "600",
           }}
         >
-          <span
+          <Typography
             style={{
               fontSize: "1rem",
               lineHeight: "1.5",
@@ -53,8 +53,8 @@ export default function NewAddToCart() {
             }}
           >
             Your Cart
-          </span>
-          <a
+          </Typography>
+          <Typography
             style={{
               margin: "0px",
               color: "rgb(252, 185, 45)",
@@ -64,9 +64,8 @@ export default function NewAddToCart() {
             }}
           >
             Clear cart
-          </a>
-        </div>
-
+          </Typography>
+        </Box>
         <Box
           sx={{
             maxHeight: "500px",
@@ -162,7 +161,6 @@ export default function NewAddToCart() {
                     </Box>
                   </Box>
                 </Box>
-
                 <Box
                   style={{
                     display: "flex",
@@ -186,7 +184,6 @@ export default function NewAddToCart() {
                     <RiDeleteBinLine color="rgb(107 107 108)" size={25} />
                   </Box>
                 </Box>
-
                 <Box
                   sx={{
                     border: "1px solid  #393C49",
@@ -204,135 +201,6 @@ export default function NewAddToCart() {
           margin: "0px 30px",
         }}
       />
-      {/* <Box>
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        paddingX: "20px",
-                        marginTop: "5px",
-                    }}
-                >
-                    <Box
-                        sx={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            paddingX: "20px",
-                            marginTop: "5px",
-                        }}
-                    >
-                        <Box sx={{
-                            // border: "1px solid",
-                            borderRadius: "50px",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            // margin: "3px 3px",
-                            padding: "0 10px",
-                        }}>
-                            <Typography sx={{
-                                display: "inline-block",
-                                padding: 0,
-                                margin: "7px",
-                                color: "var(--color-button)",
-                                fontWeight: 700,
-                                fontSize: "16px",
-                            }}> Sub-Total:</Typography>
-
-                            <Typography sx={{
-                                fontSize: "16px",
-                                fontWeight: 700,
-                                color: "var(--color-text-secondary)",
-                            }}>Rs.5000</Typography>
-                        </Box>
-                        <Box sx={{
-                            // border: "1px solid",
-                            borderRadius: "50px",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            // margin: "3px 3px",
-                            padding: "0 10px",
-                        }}>
-                            <Typography sx={{
-                                display: "inline-block",
-                                padding: 0,
-                                margin: "7px",
-                                color: "var(--color-button)",
-                                fontWeight: 700,
-                                fontSize: "16px",
-                            }}>Discounted Total:</Typography>
-                            <Typography sx={{
-                                fontSize: "16px",
-                                fontWeight: 700,
-                                color: "var(--color-text-secondary)",
-                            }}>
-                                Rs.400
-                            </Typography>
-                        </Box>
-                    </Box>
-                </Box>
-
-                <Box
-                    sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        marginTop: "10px",
-                        gap: "10px",
-                    }}
-                >
-                    <Button
-                        onClick={() => dispatch(clearCart())}
-                        variant="contained"
-                        style={{
-                            borderRadius: 7,
-                            backgroundColor: "var(--color-text-secondary)",
-                            padding: "10px 30px",
-                            fontSize: "14px",
-                            fontWeight: 600,
-                        }}
-                    >
-                        <Box marginRight={1}>Clear Cart</Box>
-                        <IoIosCloseCircle fontSize={20} />
-                    </Button>
-                     <Button
-                        onClick={addTransection}
-                        variant="contained"
-                        disabled={isDisabled}
-                        style={{
-                            borderRadius: 7,
-                            backgroundColor: "#EA7C69",
-                            padding: "10px 20px",
-                            fontSize: "14px",
-                            fontWeight: 600,
-                        }}
-                    >
-                        {isDisabled ? (
-                        <>
-                            Processing
-                            <CircularProgress size={24} color="secondary" />
-                        </>
-                         ) : (
-                        <>
-                            <Box marginRight={1}>Continue to Payment</Box>
-                            <Badge sx={{
-                                "& .MuiBadge-badge": {
-                                    right: -3,
-                                    top: 13,
-                                    border: '2px solid',
-                                    padding: "0 4px",
-                                  },
-                            }}
-                                badgeContent='Hello'
-                                color="secondary"
-                            >
-                                <MdOutlineShoppingCart />
-                            </Badge>
-                        </>
-                        )}
-                    </Button>
-                </Box>
-            </Box> */}
       <Box style={{ padding: "10px 15px", boxSizing: "border-box" }}>
         <Box
           style={{
