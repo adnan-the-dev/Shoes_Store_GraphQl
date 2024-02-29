@@ -8,8 +8,8 @@ function App() {
   return (
     <>
        <ToastContainer />
-      <RoutesComponents />
-      {/* <NewAddToCart/> */}
+      {/* <RoutesComponents /> */}
+      <NewAddToCart/>
     </>
   );
 }
