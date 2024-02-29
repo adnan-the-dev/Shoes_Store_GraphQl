@@ -22,8 +22,12 @@ import {
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { postRegisterApi } from "../../api/signApi/signUpApi";
+import { useMutation } from "@apollo/client";
+import { SIGNUP_USER } from "../../graphqlOpratation/mutation";
+import { useState } from "react";
 
 export const SignUp = () => {
+  const [dataSing,setDataSign]= useState({})
   const navigate = useNavigate();
 
   const {
@@ -33,19 +37,19 @@ export const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = (signData) => {
     const formData = {
-      username: data.username,
-      password: data.password,
-      // email: data.email,
-      isAdmin: data.isAdmin,
-      street: data.address,
-      city: data.city,
-      state: data.stateProvince,
-      country: data.country,
-      postalCode: data.PostalCode,
+      username: signData.username,
+      password: signData.password,
+      email: signData.email,
+      // isAdmin: signData.isAdmin,
+      street: signData.address,
+      city: signData.city,
+      state: signData.stateProvince,
+      country: signData.country,
+      postalCode: signData.PostalCode,
     };
-
+    setDataSign(formData)
     console.log(formData,'Hlloe');
   //   const res = await postRegisterApi(formData);
   //   if (res.status == 200) {
@@ -56,6 +60,21 @@ export const SignUp = () => {
   //   }
   // };
   }
+
+  // const[signUpUser,{data,loading,error}] =useMutation(SIGNUP_USER)
+
+  // signUpUser({
+  //   variables:{
+  //     userNew:dataSing
+  //   }
+  // })
+  // if(loading) return <h1>Loading...</h1>
+
+  // if(error) return toast.error(error.message)
+
+  // if(data) return toast.success(data.user.username)
+
+
   return (
     <>
       <Box>

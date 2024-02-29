@@ -28,8 +28,8 @@ export default function NewAddToCart() {
     <Box
       sx={{ width: 400 }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
+      // onClick={toggleDrawer(anchor, false)}
+      // onKeyDown={toggleDrawer(anchor, false)}
     >
       {/* cart */}
 

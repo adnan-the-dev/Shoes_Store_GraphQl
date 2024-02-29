@@ -1,16 +1,16 @@
 import { gql } from "@apollo/client";
 
-export const GET_SINGLE_PRODUCTS = gql`
-query singleProduct($prodcutid:ID!){
-    singleProduct(_id:$prodcutid){
-      productname
-      mindetail
-      fulldetail
-      catagory
-      pay
-      price
-      images
-      sizes
+export const SIGNUP_USER = gql`
+  mutation createUser($userNew: UserInput!) {
+    user: singUpUser(userNew: $userNew) {
+      username
+      password
+      email
+      postalCode
+      street
+      city
+      state
+      country
     }
   }
-  `
+`;

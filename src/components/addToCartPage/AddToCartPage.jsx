@@ -32,8 +32,6 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { Loader } from "../loaderPage/Loader";
 import { Box } from "@mui/material";
-import { useMutation } from "@apollo/client";
-import { GET_SINGLE_PRODUCTS } from "../../graphqlOpratation/mutation";
 export function AddToCartPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -46,9 +44,6 @@ export function AddToCartPage() {
 
   const [loading, setLoading] = useState(true);
   const param = useParams();
-  // const {error,data}=useMutation(GET_SINGLE_PRODUCTS)
-  // console.log(data,'hellos');
-
 
   const getDataApi = async () => {
     const res = await getSingleProductApi(param.id);
