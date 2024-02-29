@@ -29,6 +29,20 @@ import { useState } from "react";
 export const SignUp = () => {
   const [dataSing,setDataSign]= useState({})
   const navigate = useNavigate();
+  const[signUpUser,{data,loading,error}] =useMutation(SIGNUP_USER)
+const hello = (formData)=>{
+  signUpUser({
+    variables:{
+      userNew:formData
+    }
+  })
+  if(loading) return <h1>Loading...</h1>
+
+  if(error) return toast.error(error.message)
+
+  if(data) return toast.success(data.user.username)
+}
+
 
   const {
     register,
@@ -49,7 +63,8 @@ export const SignUp = () => {
       country: signData.country,
       postalCode: signData.PostalCode,
     };
-    setDataSign(formData)
+    // setDataSign(formData)
+    hello(formData)
     console.log(formData,'Hlloe');
   //   const res = await postRegisterApi(formData);
   //   if (res.status == 200) {
@@ -59,20 +74,10 @@ export const SignUp = () => {
   //     toast.error("Dublicate key error");
   //   }
   // };
+
   }
 
-  // const[signUpUser,{data,loading,error}] =useMutation(SIGNUP_USER)
-
-  // signUpUser({
-  //   variables:{
-  //     userNew:dataSing
-  //   }
-  // })
-  // if(loading) return <h1>Loading...</h1>
-
-  // if(error) return toast.error(error.message)
-
-  // if(data) return toast.success(data.user.username)
+  
 
 
   return (
