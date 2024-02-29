@@ -43,7 +43,6 @@ export default function Home() {
   if (error) {
     console.log(error.message);
   }
-  // console.log(data.allShoesProduct);
 
   const arr = data?.allShoesProduct?.map((item) => ({
     cat: item.catagory,

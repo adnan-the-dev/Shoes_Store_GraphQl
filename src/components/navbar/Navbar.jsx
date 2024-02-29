@@ -6,11 +6,13 @@ import { RiShoppingBag2Line } from "react-icons/ri";
 import { LogoBox, LogutBox, MainBox } from "../sharedFile/styled-component";
 import { getProductData } from "../../api/signApi/signUpApi";
 import { NavLink, useNavigate } from "react-router-dom/dist";
+import { jwtDecode } from "jwt-decode";
 
 export const Navbar = () => {
   const navigate = useNavigate();
-  const userData = localStorage.getItem("Users");
-  const user = JSON.parse(userData);
+  const token = localStorage.getItem("token");
+  // const user = jwtDecode(token);
+  // console.log(user,'user');
   const logout = () => {
     localStorage.clear();
     navigate("/");
@@ -45,7 +47,7 @@ export const Navbar = () => {
           <NavLink to="/home">
             <img style={{ width: "70px" }} src={logo} alt="" />
           </NavLink>
-          {user ? (
+          {token ? (
             <>
               <NavLink
                 to="/completeOrders"
@@ -87,7 +89,7 @@ export const Navbar = () => {
             </>
           ) : null}
 
-          {!user ? (
+          {!token ? (
             <>
               <NavLink
                 to="/login"
@@ -107,17 +109,17 @@ export const Navbar = () => {
           ) : null}
         </LogoBox>
         <LogutBox>
-          {user ? (
+          {token ? (
             <Typography onClick={() => logout()}>Log out</Typography>
           ) : null}
 
-          {user ? (
+          {token ? (
             <>
-              <Tooltip title={user.username}>
+              {/* <Tooltip title={user.username}> */}
                 <Box>
                   <AiOutlineUser />
                 </Box>
-              </Tooltip>
+              {/* </Tooltip> */}
               <NavLink to="/cart" style={{ color: "black" }}>
                 <RiShoppingBag2Line />
               </NavLink>

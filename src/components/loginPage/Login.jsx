@@ -18,6 +18,8 @@ import {
 } from "./styled-component";
 import { postLoginApi } from "../../api/signApi/signUpApi";
 import { toast } from "react-toastify";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../../graphqlOpratation/mutation";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -28,22 +30,40 @@ export const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
-    const formData = {
-      email: data.email,
-      password: data.password,
-    };
+  const [loginUser, { error, loading, data }] = useMutation(LOGIN_USER)
+  if (loading) return <h1>Loading...</h1>
 
-    const res = await postLoginApi(formData);
-    if (res.status != 200)
-      return toast.error(res.response?.data || "Unable to connect to server");
-    localStorage.setItem("Users", JSON.stringify(res.data));
+  if (data) {
+    localStorage.setItem("token", data.user.token)
     navigate("/home");
     toast.success("Login Successfully");
+  }
+
+  const onSubmit = async (loginData) => {
+    try {
+      const formData = {
+        email: loginData.email,
+        password: loginData.password,
+      };
+
+      const res = await loginUser({
+        variables: {
+          login: formData
+        }
+      })
+
+    } catch (e) {
+      console.error('user Login failed:', e);
+    }
   };
 
   return (
     <>
+
+      {
+        error &&
+        <div>{error.message}</div>
+      }
       <MainBoxLogin>
         <Box component="form" onSubmit={handleSubmit(onSubmit)}>
           <HeadingBox>Login to your account</HeadingBox>

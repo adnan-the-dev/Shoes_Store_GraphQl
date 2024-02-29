@@ -24,26 +24,9 @@ import { useNavigate } from "react-router-dom";
 import { postRegisterApi } from "../../api/signApi/signUpApi";
 import { useMutation } from "@apollo/client";
 import { SIGNUP_USER } from "../../graphqlOpratation/mutation";
-import { useState } from "react";
 
 export const SignUp = () => {
-  const [dataSing,setDataSign]= useState({})
   const navigate = useNavigate();
-  const[signUpUser,{data,loading,error}] =useMutation(SIGNUP_USER)
-const hello = (formData)=>{
-  signUpUser({
-    variables:{
-      userNew:formData
-    }
-  })
-  if(loading) return <h1>Loading...</h1>
-
-  if(error) return toast.error(error.message)
-
-  if(data) return toast.success(data.user.username)
-}
-
-
   const {
     register,
     handleSubmit,
@@ -51,37 +34,42 @@ const hello = (formData)=>{
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (signData) => {
-    const formData = {
-      username: signData.username,
-      password: signData.password,
-      email: signData.email,
-      // isAdmin: signData.isAdmin,
-      street: signData.address,
-      city: signData.city,
-      state: signData.stateProvince,
-      country: signData.country,
-      postalCode: signData.PostalCode,
-    };
-    // setDataSign(formData)
-    hello(formData)
-    console.log(formData,'Hlloe');
-  //   const res = await postRegisterApi(formData);
-  //   if (res.status == 200) {
-  //     toast.success("User Register Successfully");
-  //     navigate("/login");
-  //   } else {
-  //     toast.error("Dublicate key error");
-  //   }
-  // };
+  const [signUpUser, { loading, error }] = useMutation(SIGNUP_USER)
+  if (loading) return <h1>Loading...</h1>
 
+  const onSubmit = async (signData) => {
+    try {
+      const formData = {
+        username: signData.username,
+        password: signData.password,
+        email: signData.email,
+        // isAdmin: signData.isAdmin,
+        street: signData.address,
+        city: signData.city,
+        state: signData.stateProvince,
+        country: signData.country,
+        postalCode: signData.PostalCode,
+      };
+      const res = await signUpUser({
+        variables: {
+          userNew: formData
+        }
+      })
+      toast.success("User Register Successfully");
+      navigate("/login");
+    } catch (e) {
+      console.error('Failed to create user:', e);
+    }
   }
-
-  
 
 
   return (
     <>
+      {
+        error &&
+          <div>{error.message}</div>
+      
+      }
       <Box>
         <Box
           component="form"
@@ -153,8 +141,8 @@ const hello = (formData)=>{
                   required: "Email is required",
                 })}
                 error={Boolean(errors.email)}
-              helperText={errors.email?.message}
-              margin="normal"
+                helperText={errors.email?.message}
+                margin="normal"
               />
             </EmailMainBox>
             <InputLable>Street Address</InputLable>
@@ -176,8 +164,8 @@ const hello = (formData)=>{
                   required: "City is required",
                 })}
                 error={Boolean(errors.city)}
-              helperText={errors.city?.message}
-              margin="normal"
+                helperText={errors.city?.message}
+                margin="normal"
               />
               <ArrowBox>
                 <IoIosArrowUp size={14} />
