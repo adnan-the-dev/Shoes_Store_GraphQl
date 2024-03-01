@@ -6,14 +6,22 @@ import { RiShoppingBag2Line } from "react-icons/ri";
 import { LogoBox, LogutBox, MainBox } from "../sharedFile/styled-component";
 import { getProductData } from "../../api/signApi/signUpApi";
 import { NavLink, json, useNavigate } from "react-router-dom/dist";
-// import { jwtDecode } from "jwt-decode";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useSelector } from "react-redux";
+import { useQuery } from "@apollo/client";
+import { GET_ALL_PRODUCTS } from "../../graphqlOpratation/queries";
 
 export const Navbar = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const userData = localStorage.getItem("user");
   const user = JSON.parse(userData);
-  
+
+  const store = useSelector((state) => state.cart.cart);
+
   const logout = () => {
     localStorage.clear();
     navigate("/");
@@ -30,16 +38,29 @@ export const Navbar = () => {
     }
   }, [brand]);
 
-  const getDataApi = async () => {
-    const res = await getProductData();
-    setProdcuts(res.data.result);
-  };
+  const { loading, error, data } = useQuery(GET_ALL_PRODUCTS);
+
+  if (loading) return <h1>Loading...</h1>;
+
+  if (error) {
+    console.log(error.message);
+  }
+
   useEffect(() => {
-    getDataApi();
+    setProdcuts(data?.allShoesProduct);
   }, []);
 
   const arr = prodcuts.map((item) => ({ cat: item.catagory, id: item.images }));
   const unique = [...new Set(arr.map((item) => item.cat))];
+
+  const StyledBadge = styled(Badge)(({ theme }) => ({
+    "& .MuiBadge-badge": {
+      right: -3,
+      top: 13,
+      border: `2px solid ${theme.palette.background.paper}`,
+      padding: "0 4px",
+    },
+  }));
 
   return (
     <>
@@ -121,8 +142,18 @@ export const Navbar = () => {
                   <AiOutlineUser />
                 </Box>
               </Tooltip>
-              <NavLink to="/cart" style={{ color: "black" }}>
+              {/* <NavLink to="/cart" style={{ color: "black" }}>
                 <RiShoppingBag2Line />
+              </NavLink> */}
+              <NavLink to="/cart" style={{ color: "black" }}>
+                <IconButton aria-label="cart">
+                  <StyledBadge
+                    badgeContent={store.length || '0'}
+                    color="secondary"
+                  >
+                    <ShoppingCartIcon />
+                  </StyledBadge>
+                </IconButton>
               </NavLink>
             </>
           ) : null}

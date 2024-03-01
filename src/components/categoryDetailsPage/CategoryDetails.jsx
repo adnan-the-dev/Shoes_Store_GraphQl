@@ -26,6 +26,8 @@ import { useParams } from "react-router-dom";
 import { getProductData } from "../../api/signApi/signUpApi";
 import { Link, NavLink } from "react-router-dom/dist";
 import { useForm } from "react-hook-form";
+import { useQuery } from "@apollo/client";
+import { GET_ALL_PRODUCTS } from "../../graphqlOpratation/queries";
 
 export default function CategoryDetails() {
   const param = useParams();
@@ -35,10 +37,18 @@ export default function CategoryDetails() {
   const [formDataPrice, setFormDataPrice] = useState({});
   const { register, handleSubmit } = useForm();
 
-  const getDataApi = async () => {
-    const res = await getProductData();
-    setProdcuts(res.data.result);
-  };
+  const { loading, error, data } = useQuery(GET_ALL_PRODUCTS);
+
+  if (loading) return <h1>Loading...</h1>;
+
+  if (error) {
+    console.log(error.message);
+  }
+
+  useEffect(() => {
+    setProdcuts(data?.allShoesProduct);
+  }, []);
+
   const filteredProducts = prodcuts.filter(
     (prod) =>
       prod.catagory.toLowerCase() === param.code &&
@@ -63,9 +73,6 @@ export default function CategoryDetails() {
     setFormDataPrice(formData);
   };
 
-  useEffect(() => {
-    getDataApi();
-  }, []);
   return (
     <>
       <MainBox>

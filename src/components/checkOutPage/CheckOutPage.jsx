@@ -36,9 +36,10 @@ export const CheckOutPage = () => {
   const dispatch = useDispatch();
   const userData = localStorage.getItem("user");
   const user = JSON.parse(userData);
+
+  console.log(user,'hellos');
   const store = useSelector((state) => state.cart.cart);
-  
-  console.log(store, "hello world");
+
   let totalAmount = 0;
   for (let i = 0; i < store.length; i++) {
     const qut = store[i].quantity;

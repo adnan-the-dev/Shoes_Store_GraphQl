@@ -48,9 +48,10 @@ export function AddToCartPage() {
     variables: { prodcutid: id },
   });
   const { loading, error, data = {} } = response;
-  if (error) return <h1>console.error();</h1>;
 
-  console.log(data.singleProd, "datatat");
+  if (error) return <h1>Some Error Ocured</h1>;
+
+  if (loading) return <h1>Data Loading...</h1>;
 
   const singleProduct = data?.singleProd;
 
@@ -78,43 +79,37 @@ export function AddToCartPage() {
         <ChildContainer>
           <ImageBox>
             <ChildImage>
-              {!loading && (
-                <>
-                  <SmallImge
-                    component="img"
-                    src={singleProduct?.images[0]}
-                    alt=""
-                    onClick={() => setImage(singleProduct.images[0])}
-                  />
-                  <SmallImge
-                    isActive={true}
-                    component="img"
-                    src={singleProduct?.images[1]}
-                    alt=""
-                    onClick={() => setImage(singleProduct.images[1])}
-                  />
-                  <SmallImge
-                    isActive={true}
-                    component="img"
-                    src={singleProduct?.images[2]}
-                    alt=""
-                    onClick={() => setImage(singleProduct.images[2])}
-                  />
-                </>
-              )}
-            </ChildImage>
-            {!loading && (
-              <LargeImage>
-                <Box style={{ display: "flex", justifyContent: "center" }}>
-                  {/* <Loader /> */}
-                </Box>
-                <LargeImg
+              <>
+                <SmallImge
                   component="img"
-                  src={image || singleProduct.images[0]}
+                  src={singleProduct?.images[0]}
                   alt=""
+                  onClick={() => setImage(singleProduct.images[0])}
                 />
-              </LargeImage>
-            )}
+                <SmallImge
+                  isActive={true}
+                  component="img"
+                  src={singleProduct?.images[1]}
+                  alt=""
+                  onClick={() => setImage(singleProduct.images[1])}
+                />
+                <SmallImge
+                  isActive={true}
+                  component="img"
+                  src={singleProduct?.images[2]}
+                  alt=""
+                  onClick={() => setImage(singleProduct.images[2])}
+                />
+              </>
+            </ChildImage>
+            <LargeImage>
+              <Box style={{ display: "flex", justifyContent: "center" }}></Box>
+              <LargeImg
+                component="img"
+                src={image || singleProduct.images[0]}
+                alt=""
+              />
+            </LargeImage>
           </ImageBox>
 
           <ImageTextBox>
