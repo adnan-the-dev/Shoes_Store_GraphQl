@@ -30,6 +30,8 @@ import { removeItem, resetCart } from "../../redux/slices/cartSlice";
 import { placeOrderApi } from "../../api/orders/orders";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useMutation } from "@apollo/client";
+import { PLACE_ORDER } from "../../graphqlOpratation/mutation";
 
 export const CheckOutPage = () => {
   const navigate = useNavigate();
@@ -54,6 +56,10 @@ export const CheckOutPage = () => {
     itemImage: item.img[0],
     itemName: item.name,
   }));
+console.log(cartItems,'CartItems');
+  const [orderPlaced, { error, loading }] = useMutation(PLACE_ORDER);
+  if (loading) return <h1>Loading...</h1>;
+  if (error) return <h1>Some Error</h1>;
 
   const placeOrderFunc = async () => {
     const placeOrder = {
@@ -62,13 +68,21 @@ export const CheckOutPage = () => {
       subTotal: totalAmount,
       items: cartItems,
     };
-    const res = await placeOrderApi(placeOrder);
-    if (res.status == 200) {
-      toast.success("Order Placed");
-      navigate("/home");
-    } else {
-      toast.error("unable to place order");
-    }
+
+    const res = await orderPlaced({
+      variables: {
+        orderPlace: placeOrder,
+      },
+      });
+    toast.success("Order Placed");
+    navigate("/home");
+    // const res = await placeOrderApi(placeOrder);
+    // if (res.status == 200) {
+    //   toast.success("Order Placed");
+    //   navigate("/home");
+    // } else {
+    //   toast.error("unable to place order");
+    // }
   };
 
   const order = () => {

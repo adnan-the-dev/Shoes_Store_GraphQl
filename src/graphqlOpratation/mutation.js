@@ -27,3 +27,21 @@ export const LOGIN_USER = gql`
   }
 `;
 
+export const PLACE_ORDER = gql`
+mutation createOrder($orderPlace:PlaceOrderInput!){
+  placeOrder(orderPlace:$orderPlace){
+    userName
+    userId
+    status
+    subTotal
+    items{
+      itemId
+      quantity
+      size
+      itemPrice
+      itemImage
+      itemName
+    }
+  }
+}
+ `

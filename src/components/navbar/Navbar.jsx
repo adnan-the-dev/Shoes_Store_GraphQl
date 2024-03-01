@@ -40,10 +40,12 @@ export const Navbar = () => {
 
   const { loading, error, data } = useQuery(GET_ALL_PRODUCTS);
 
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
 
   if (error) {
-    console.log(error.message);
+    return <h1>Some Error Ocured</h1>
   }
 
   useEffect(() => {
@@ -142,9 +144,6 @@ export const Navbar = () => {
                   <AiOutlineUser />
                 </Box>
               </Tooltip>
-              {/* <NavLink to="/cart" style={{ color: "black" }}>
-                <RiShoppingBag2Line />
-              </NavLink> */}
               <NavLink to="/cart" style={{ color: "black" }}>
                 <IconButton aria-label="cart">
                   <StyledBadge

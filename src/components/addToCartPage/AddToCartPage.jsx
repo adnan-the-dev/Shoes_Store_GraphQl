@@ -71,6 +71,8 @@ export function AddToCartPage() {
     } else {
       toast.error("Select Size");
     }
+
+    console.log(total,'Total');
   }
 
   return (
