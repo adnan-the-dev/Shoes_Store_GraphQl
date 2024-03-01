@@ -40,7 +40,6 @@ export const PatientDetailsForm = () => {
       date: data.date,
       
     };
-    console.log(formData, "helkjsdfks");
   };
   return (
     <>

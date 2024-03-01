@@ -37,7 +37,6 @@ export const CheckOutPage = () => {
   const userData = localStorage.getItem("user");
   const user = JSON.parse(userData);
 
-  console.log(user,'hellos');
   const store = useSelector((state) => state.cart.cart);
 
   let totalAmount = 0;
