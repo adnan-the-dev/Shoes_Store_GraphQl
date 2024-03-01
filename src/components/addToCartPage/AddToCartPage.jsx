@@ -32,26 +32,27 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { Loader } from "../loaderPage/Loader";
 import { Box } from "@mui/material";
+import { useQuery } from "@apollo/client";
+import { GET_SINGLE_PRODUCTS } from "../../graphqlOpratation/queries";
 export function AddToCartPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [singleProduct, setSingleProduct] = useState({});
   const [selectSize, setSelectSize] = useState("");
   const [image, setImage] = useState();
-  const [isLoading, setIsLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
 
-  const [loading, setLoading] = useState(true);
-  const param = useParams();
+  const { id } = useParams();
 
-  const getDataApi = async () => {
-    const res = await getSingleProductApi(param.id);
-    if (res.status == 200) {
-      setLoading(false);
-      setSingleProduct(res.data);
-    }
-  };
+  const response = useQuery(GET_SINGLE_PRODUCTS, {
+    variables: { prodcutid: id },
+  });
+  const { loading, error, data = {} } = response;
+  if (error) return <h1>console.error();</h1>;
+
+  console.log(data.singleProd, "datatat");
+
+  const singleProduct = data?.singleProd;
 
   function addToCart() {
     const total = {
@@ -70,15 +71,6 @@ export function AddToCartPage() {
       toast.error("Select Size");
     }
   }
-  useEffect(() => {
-    const loaderComponent = () => {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 5000);
-    };
-    getDataApi();
-    loaderComponent();
-  }, []);
 
   return (
     <>
@@ -113,17 +105,14 @@ export function AddToCartPage() {
             </ChildImage>
             {!loading && (
               <LargeImage>
-                {isLoading ? (
-                  <Box style={{ display: "flex", justifyContent: "center" }}>
-                    <Loader />
-                  </Box>
-                ) : (
-                  <LargeImg
-                    component="img"
-                    src={image || singleProduct.images[0]}
-                    alt=""
-                  />
-                )}
+                <Box style={{ display: "flex", justifyContent: "center" }}>
+                  {/* <Loader /> */}
+                </Box>
+                <LargeImg
+                  component="img"
+                  src={image || singleProduct.images[0]}
+                  alt=""
+                />
               </LargeImage>
             )}
           </ImageBox>

@@ -17,3 +17,18 @@ query getAllShoesProducts{
   }
 `
 
+export const GET_SINGLE_PRODUCTS = gql`
+  query singleProduct($prodcutid: ID!) {
+    singleProd(_id: $prodcutid) {
+      _id
+      productname
+      mindetail
+      fulldetail
+      catagory
+      pay
+      price
+      images
+      sizes
+    }
+  }
+`;

@@ -5,14 +5,15 @@ import { AiOutlineUser } from "react-icons/ai";
 import { RiShoppingBag2Line } from "react-icons/ri";
 import { LogoBox, LogutBox, MainBox } from "../sharedFile/styled-component";
 import { getProductData } from "../../api/signApi/signUpApi";
-import { NavLink, useNavigate } from "react-router-dom/dist";
-import { jwtDecode } from "jwt-decode";
+import { NavLink, json, useNavigate } from "react-router-dom/dist";
+// import { jwtDecode } from "jwt-decode";
 
 export const Navbar = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  // const user = jwtDecode(token);
-  // console.log(user,'user');
+  const userData = localStorage.getItem("user");
+  const user = JSON.parse(userData);
+  
   const logout = () => {
     localStorage.clear();
     navigate("/");
@@ -115,11 +116,11 @@ export const Navbar = () => {
 
           {token ? (
             <>
-              {/* <Tooltip title={user.username}> */}
+              <Tooltip title={user.username}>
                 <Box>
                   <AiOutlineUser />
                 </Box>
-              {/* </Tooltip> */}
+              </Tooltip>
               <NavLink to="/cart" style={{ color: "black" }}>
                 <RiShoppingBag2Line />
               </NavLink>

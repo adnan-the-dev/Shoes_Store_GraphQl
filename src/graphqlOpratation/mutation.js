@@ -13,26 +13,17 @@ export const SIGNUP_USER = gql`
       country
     }
   }
-`
+`;
 export const LOGIN_USER = gql`
-mutation loginUser($login:LoginUserInput!){
-  user:loginUser(userLogin:$login){
-   token
+  mutation loginUser($login: LoginUserInput!) {
+    user: loginUser(userLogin: $login) {
+      token
+      user {
+        _id
+        username
+        email
+      }
+    }
   }
-}
-`
-export const GET_SINGLE_PRODUCTS =gql`
-query singleProduct($prodcutid:ID!){
-  singleProduct(_id:$prodcutid){
-    _id
-    productname
-    mindetail
-    fulldetail
-    catagory
-    pay
-    price
-    images
-    sizes
-  }
-}
-`
+`;
+

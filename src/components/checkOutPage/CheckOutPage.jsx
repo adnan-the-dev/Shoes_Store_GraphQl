@@ -34,9 +34,10 @@ import { toast } from "react-toastify";
 export const CheckOutPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userData = localStorage.getItem("Users");
+  const userData = localStorage.getItem("user");
   const user = JSON.parse(userData);
   const store = useSelector((state) => state.cart.cart);
+  
   console.log(store, "hello world");
   let totalAmount = 0;
   for (let i = 0; i < store.length; i++) {

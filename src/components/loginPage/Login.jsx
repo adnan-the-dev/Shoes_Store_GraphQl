@@ -30,11 +30,11 @@ export const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const [loginUser, { error, loading, data }] = useMutation(LOGIN_USER)
-  if (loading) return <h1>Loading...</h1>
-
+  const [loginUser, { error, loading, data }] = useMutation(LOGIN_USER);
+  if (loading) return <h1>Loading...</h1>;
   if (data) {
-    localStorage.setItem("token", data.user.token)
+    localStorage.setItem("token", data.user.token);
+    localStorage.setItem("user", JSON.stringify(data.user.user));
     navigate("/home");
     toast.success("Login Successfully");
   }
@@ -48,22 +48,17 @@ export const Login = () => {
 
       const res = await loginUser({
         variables: {
-          login: formData
-        }
-      })
-
+          login: formData,
+        },
+      });
     } catch (e) {
-      console.error('user Login failed:', e);
+      console.error("user Login failed:", e);
     }
   };
 
   return (
     <>
-
-      {
-        error &&
-        <div>{error.message}</div>
-      }
+      {error && <div>{error.message}</div>}
       <MainBoxLogin>
         <Box component="form" onSubmit={handleSubmit(onSubmit)}>
           <HeadingBox>Login to your account</HeadingBox>
